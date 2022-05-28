@@ -1,9 +1,17 @@
 import {NavLink} from "react-router-dom";
+import {Menu} from "antd";
+
 
 const NavigationMenu = () =>{
     return <>
-        <NavLink  to={"/"}> all cats</NavLink>
-        <NavLink  to={"/fav"}> fav cats</NavLink>
+        <header>
+            <Menu
+                theme="dark"
+                mode="horizontal">
+                <Menu.Item> <NavLink  to={"/"}> all cats</NavLink></Menu.Item>
+                <Menu.Item> <NavLink  to={"/fav"}> fav cats</NavLink></Menu.Item>
+            </Menu>
+        </header>
     </>
 }
 
