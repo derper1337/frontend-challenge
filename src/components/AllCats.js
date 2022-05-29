@@ -1,35 +1,23 @@
 import {useDispatch, useSelector} from "react-redux";
 import {addFavThunk, deleteFavThunk, getCatsThunk} from "../app/appReducer";
-import {Image} from "antd";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from "./Loader";
-import LikeButton from "./LikeButton";
-import QueueAnim from 'rc-queue-anim';
-import { Spin } from 'antd';
+import CatsList from "./CatsList";
 
 const AllCats = ({cats, addFav, loadMore, favCats, deleteFav}) => {
     const catsList = cats.map(c => {
-        return <div className="image-container" key={c.id}>
-            <Image className="image" src={c.url} placeholder={<Spin size={"large"} style={{padding:"40px"}}/>}/>
-            <LikeButton addFav={addFav} catId={c.id} favCats={favCats} deleteFav={deleteFav}/>
+        return <div key={c.id}>
+            <CatsList catsId={c.id} imgUrl={c.url} deleteFav={deleteFav} addFav={addFav} favCats={favCats}/>
         </div>
     })
-
-    const dispatch = useDispatch();
-    return <>
+    return (
         <InfiniteScroll className={"scroll-component"}
-            dataLength={catsList.length}
-            next={loadMore}
-            hasMore={true}
-            loader={<Loader/>}>
-            <QueueAnim className="image-list"  animConfig={[
-                { opacity: [1, 0], translateY: [0, -50] },
-                { opacity: [1, 0], translateY: [0, 50] }
-            ]}>
-                {catsList}
-            </QueueAnim>
-        </InfiniteScroll>
-    </>
+                        dataLength={catsList.length}
+                        next={loadMore}
+                        hasMore={true}
+                        loader={<Loader/>}>
+            {catsList}
+        </InfiniteScroll>)
 }
 
 const AllCatsContainer = () => {

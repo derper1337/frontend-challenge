@@ -1,10 +1,8 @@
 import catsAPI from "./api";
 
 const INITIAL_STATE = {
-    started: false,
     cats: [],
     favCats: [],
-    pageInfo: {},
 }
 const appReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
@@ -18,12 +16,6 @@ const appReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 favCats: action.favCats,
-            }
-        }
-        case "APP_STARTED":{
-            return {
-                ...state,
-                started: true,
             }
         }
         default:
@@ -66,7 +58,6 @@ export const deleteFavThunk = (imgId) =>{
 
 export const startApp=()=>{
     return (dispatch)=>{
-        dispatch({type:"APP_STARTED"})
         dispatch(getCatsThunk());
         dispatch(getFavCatsThunk());
     }

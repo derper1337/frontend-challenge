@@ -1,14 +1,13 @@
 import {useDispatch, useSelector} from "react-redux";
 import {Empty, Image, Spin} from "antd";
-import LikeButton from "./LikeButton";
 import {addFavThunk, deleteFavThunk} from "../app/appReducer";
 import QueueAnim from "rc-queue-anim";
+import CatsList from "./CatsList";
 
 const FavoriteCats = ({addFav, favCats, deleteFav}) => {
     const catsList = favCats.map(c => {
-        return <div className="image-container" key={c.id}>
-            <Image className="image" src={c.image.url}  placeholder={<Spin size={"large"} style={{padding:"40px"}}/>}/>
-            <LikeButton addFav={addFav} catId={c.image_id} favCats={favCats} deleteFav={deleteFav}/>
+        return <div key={c.id}>
+            <CatsList catsId={c.image_id} imgUrl={c.image.url} deleteFav={deleteFav} addFav={addFav} favCats={favCats}/>
         </div>
     })
 
