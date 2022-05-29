@@ -8,6 +8,7 @@ If you want to start it on your local machine use separate commands:
 - infinte scrolling
 - add/remove from favourites
 - adaptive design
+- watch full img on click!
 
 
 ### Technologies Used:
