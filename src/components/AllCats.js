@@ -16,7 +16,9 @@ const AllCats = ({cats, addFav, loadMore, favCats, deleteFav}) => {
                         next={loadMore}
                         hasMore={true}
                         loader={<Loader/>}>
-            {catsList}
+            <div className={"image-list"}>
+                {catsList}
+            </div>
         </InfiniteScroll>)
 }
 
