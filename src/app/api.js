@@ -6,7 +6,7 @@ const catsAPI = {
             'x-api-key': '07e68072-698c-4563-a07e-2f26498868fb',
         }
     },
-    getCats(limit = 7, page = 0, order = "Rand") {
+    getCats(limit = 20, page = 0, order = "Rand") {
         return axios.get(`https://api.thecatapi.com/v1/images/search?limit=${limit}&page=${page}&order=${order}`, this.options)
             .then(res => {
                 return res.data;
