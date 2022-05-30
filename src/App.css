@@ -34,7 +34,12 @@
   position:relative;
 }
 
+.image-container:hover .like-button{
+  opacity: 1;
+}
+
 .like-button{
+  opacity: 0;
   border-radius: 100px;
   background-color: rgba(0, 0, 0, 0);
   z-index: 100;
